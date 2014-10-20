@@ -1,0 +1,68 @@
+object MainScreen: TMainScreen
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 313
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Align = Top
+    Position.Y = 49.000000000000000000
+    Size.Width = 313.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Ekle'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Align = Top
+    Position.Y = 98.000000000000000000
+    Size.Width = 313.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Test Yay'#305'nla'
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = Top
+    Size.Width = 313.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'Register'
+    OnClick = Button3Click
+  end
+  object Label1: TLabel
+    Align = Top
+    AutoSize = True
+    Position.Y = 147.000000000000000000
+    Size.Width = 313.000000000000000000
+    Size.Height = 87.000000000000000000
+    Size.PlatformDefault = False
+    Text = 
+      'Yay'#305'nlanan mesaj manuel oldugu i'#231'in telefon sinyali yoktur ve bo' +
+      #351' mesaj d'#246'ner. Ger'#231'ek aramada do'#287'ru sonu'#231' alabilirsiniz.'
+  end
+  object Label2: TLabel
+    Align = Top
+    AutoSize = True
+    Margins.Top = 15.000000000000000000
+    Position.Y = 249.000000000000000000
+    Size.Width = 313.000000000000000000
+    Size.Height = 87.000000000000000000
+    Size.PlatformDefault = False
+    Text = 
+      'Posted messages to the manual that there is no phone signal and ' +
+      'returns empty message. Get accurate results in the actual call.'
+  end
+  object BroadcastReceiver2: TBroadcastReceiver
+    onReceive = BroadcastReceiver2Receive
+    Left = 112
+    Top = 384
+  end
+end
