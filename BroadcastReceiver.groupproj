@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FC07EA70-7D77-495D-86CD-5E77BBC8EC45}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Install\ReceiverInstall.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\XE7\XE7Example.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\XE6\XE6Example.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ReceiverInstall">
+        <MSBuild Projects="Install\ReceiverInstall.dproj"/>
+    </Target>
+    <Target Name="ReceiverInstall:Clean">
+        <MSBuild Projects="Install\ReceiverInstall.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ReceiverInstall:Make">
+        <MSBuild Projects="Install\ReceiverInstall.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="XE7Example">
+        <MSBuild Projects="Demo\XE7\XE7Example.dproj"/>
+    </Target>
+    <Target Name="XE7Example:Clean">
+        <MSBuild Projects="Demo\XE7\XE7Example.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XE7Example:Make">
+        <MSBuild Projects="Demo\XE7\XE7Example.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="XE6Example">
+        <MSBuild Projects="Demo\XE6\XE6Example.dproj"/>
+    </Target>
+    <Target Name="XE6Example:Clean">
+        <MSBuild Projects="Demo\XE6\XE6Example.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XE6Example:Make">
+        <MSBuild Projects="Demo\XE6\XE6Example.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ReceiverInstall;XE7Example;XE6Example"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ReceiverInstall:Clean;XE7Example:Clean;XE6Example:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ReceiverInstall:Make;XE7Example:Make;XE6Example:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
