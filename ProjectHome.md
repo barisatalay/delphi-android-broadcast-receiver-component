@@ -1,0 +1,1 @@
+![http://3.bp.blogspot.com/-znDqZ9H6FC8/VET_viN3xTI/AAAAAAAAAxI/oOCB849-7Rs/s1600/Delphi_android_broadcast_receive.png](http://3.bp.blogspot.com/-znDqZ9H6FC8/VET_viN3xTI/AAAAAAAAAxI/oOCB849-7Rs/s1600/Delphi_android_broadcast_receive.png)
