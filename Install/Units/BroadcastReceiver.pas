@@ -7,7 +7,9 @@ Uses
   {$IFDEF ANDROID}
   ,Androidapi.JNI.Embarcadero
   ,Androidapi.JNI.GraphicsContentViewText
+  ,Androidapi.JNI.JavaTypes
   ,Androidapi.helpers
+  ,Androidapi.JNI.App
   ,Androidapi.JNIBridge
   ,FMX.Helpers.Android
   {$ENDIF}
@@ -93,7 +95,7 @@ begin
     {$IFDEF ANDROID}
       filter := TJIntentFilter.Create;
       filter.addAction(StringToJString(Value));
-      SharedActivityContext.registerReceiver(FReceiver,filter);
+      TAndroidHelper.context.registerReceiver(FReceiver,filter);
     {$ENDIF}
       FItems.Add(Value);
     end;
@@ -116,7 +118,7 @@ begin
   begin
     FItems.Delete(Index);
     {$IFDEF ANDROID}
-      SharedActivity.UnregisterReceiver(FReceiver);
+      TAndroidHelper.Activity.UnregisterReceiver(FReceiver);
       RegisterReceive;
     {$ENDIF}
   end;
@@ -127,7 +129,7 @@ begin
   FItems.Free;
 {$IFDEF ANDROID}
   if FReceiver <> nil  then
-    SharedActivity.UnregisterReceiver(FReceiver);
+    TAndroidHelper.Activity.UnregisterReceiver(FReceiver);
 {$ENDIF}
   inherited;
 end;
@@ -146,7 +148,7 @@ function TBroadcastReceiver.HasPermission(const Permission: string): Boolean;
 {$IFDEF ANDROID}
 begin
   //Permissions listed at http://d.android.com/reference/android/Manifest.permission.html
-  Result := SharedActivity.checkCallingOrSelfPermission(
+  Result := TAndroidHelper.Activity.checkCallingOrSelfPermission(
     StringToJString(Permission)) =
     TJPackageManager.JavaClass.PERMISSION_GRANTED
 {$ELSE}
@@ -192,7 +194,7 @@ var
 begin
   Inx := TJIntent.Create;
   Inx.setAction(StringToJString(Value));
-  SharedActivityContext.sendBroadcast(Inx);
+  TAndroidHelper.context.sendBroadcast(Inx);
 {$ELSE}
 begin
 {$ENDIF}
